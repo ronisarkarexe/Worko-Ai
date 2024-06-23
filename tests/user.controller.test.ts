@@ -127,4 +127,24 @@ describe("User Controller", () => {
     expect(response.status).toBe(200);
     expect(response.body.data[0].email).toEqual(userData.email);
   });
+
+  it("should user soft deleted", async () => {
+    const mockUsers = [
+      {
+        _id: "1",
+        email: "user1@example.com",
+        name: "User One",
+        age: 20,
+        city: "City One",
+        zipCode: "11111",
+        isDelete: false,
+      },
+    ];
+    (UserService.softDeleteUser as jest.Mock).mockResolvedValue(mockUsers);
+
+    const response = await request(app).patch(
+      `/api/v1/worko/user/soft_delete/1`
+    );
+    expect(response.status).toBe(200);
+  });
 });
