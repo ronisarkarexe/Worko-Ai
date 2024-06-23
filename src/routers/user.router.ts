@@ -17,12 +17,16 @@ router.post(
 
 router.put(
   "/update_user/:userId",
-  validateRequest(Validator.createUser),
+  validateRequest(Validator.updateUser),
   UserController.updateUserPut
 );
 
 router.patch("/update_user/:userId", UserController.updateUserPatch);
 
-router.patch("/soft_delete/:userId", UserController.softDeleteUser);
+router.patch(
+  "/soft_delete/:userId",
+  validateRequest(Validator.updateUser),
+  UserController.softDeleteUser
+);
 
 export const UserRouter = router;

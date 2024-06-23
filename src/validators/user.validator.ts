@@ -9,6 +9,16 @@ const createUser = Joi.object({
   }),
 }).unknown(true);
 
+const updateUser = Joi.object({
+  email: Joi.string().email().messages({
+    "any.required": "Email is required.",
+  }),
+  zipCode: Joi.number().messages({
+    "any.required": "Zip Code is required.",
+  }),
+}).unknown(true);
+
 export const Validator = {
   createUser,
+  updateUser,
 };
