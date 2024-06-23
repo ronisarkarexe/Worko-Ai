@@ -24,4 +24,47 @@ describe("User Controller", () => {
       .send(userData);
     expect(response.status).toBe(200);
   });
+
+  it("should get user by id", async () => {
+    const mockUser = {
+      _id: "1",
+      email: "user1@example.com",
+      name: "User One",
+      age: 20,
+      city: "City One",
+      zipCode: "11111",
+    };
+
+    (UserService.getUser as jest.Mock).mockResolvedValue(mockUser);
+    const response = await request(app).get("/api/v1/worko/user/1");
+    expect(response.status).toBe(200);
+    expect(response.body.data).toEqual(mockUser);
+  });
+
+  it("should list all users", async () => {
+    const mockUsers = [
+      {
+        _id: "1",
+        email: "user1@example.com",
+        name: "User One",
+        age: 20,
+        city: "City One",
+        zipCode: "11111",
+      },
+      {
+        _id: "2",
+        email: "user2@example.com",
+        name: "User Two",
+        age: 30,
+        city: "City Two",
+        zipCode: "22222",
+      },
+    ];
+
+    (UserService.getUsers as jest.Mock).mockResolvedValue(mockUsers);
+
+    const response = await request(app).get("/api/v1/worko/user/list_user");
+    expect(response.status).toBe(200);
+    expect(response.body.data).toEqual(mockUsers);
+  });
 });
