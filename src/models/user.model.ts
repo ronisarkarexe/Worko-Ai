@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { IUser, UserModel } from "../dto/user.dto";
 
-const UserSchema: Schema<IUser> = new Schema<IUser, UserModel>(
+export const UserSchema: Schema<IUser> = new Schema<IUser, UserModel>(
   {
     email: { type: String, required: true, unique: true, lowercase: true },
     name: { type: String, required: true, maxlength: 100, minlength: 5 },
