@@ -24,9 +24,21 @@ const updateUserPut = async (userId: string, payload: UserDtoModel) => {
   return result;
 };
 
+const updateUserPatch = async (
+  userId: string,
+  payload: Partial<UserDtoModel>
+) => {
+  const result = await User.findOneAndUpdate({ _id: userId }, payload, {
+    new: true,
+    runValidators: true,
+  });
+  return result;
+};
+
 export const UserService = {
   createUser,
   getUsers,
   getUser,
   updateUserPut,
+  updateUserPatch,
 };

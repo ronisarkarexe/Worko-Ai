@@ -21,4 +21,6 @@ router.put(
   UserController.updateUserPut
 );
 
+router.patch("/update_user/:userId", UserController.updateUserPatch);
+
 export const UserRouter = router;
