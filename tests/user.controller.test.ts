@@ -67,4 +67,64 @@ describe("User Controller", () => {
     expect(response.status).toBe(200);
     expect(response.body.data).toEqual(mockUsers);
   });
+
+  it("should update user using put method", async () => {
+    const mockUsers = [
+      {
+        _id: "1",
+        email: "user1@example.com",
+        name: "User One",
+        age: 20,
+        city: "City One",
+        zipCode: "11111",
+      },
+    ];
+
+    const userData = {
+      _id: "1",
+      email: "user1@example.com",
+      name: "User One",
+      age: 20,
+      city: "City One",
+      zipCode: "11111",
+    };
+
+    (UserService.updateUserPut as jest.Mock).mockResolvedValue(mockUsers);
+
+    const response = await request(app)
+      .put("/api/v1/worko/user/update_user/1")
+      .send(userData);
+    expect(response.status).toBe(200);
+    expect(response.body.data[0]).toEqual(userData);
+  });
+
+  it("should update user using patch method", async () => {
+    const mockUsers = [
+      {
+        _id: "1",
+        email: "user1@example.com",
+        name: "User One",
+        age: 20,
+        city: "City One",
+        zipCode: "11111",
+      },
+    ];
+
+    const userData = {
+      _id: "1",
+      email: "user1@example.com",
+      name: "User One",
+      age: 20,
+      city: "City One",
+      zipCode: "11111",
+    };
+
+    (UserService.updateUserPut as jest.Mock).mockResolvedValue(mockUsers);
+
+    const response = await request(app)
+      .put("/api/v1/worko/user/update_user/1")
+      .send(userData);
+    expect(response.status).toBe(200);
+    expect(response.body.data[0].email).toEqual(userData.email);
+  });
 });
