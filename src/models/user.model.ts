@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { IUser, UserModel } from "../dto_models/user.dto.model";
+import { IUser, UserModel } from "../dto/user.dto";
 
 const UserSchema: Schema<IUser> = new Schema<IUser, UserModel>(
   {
