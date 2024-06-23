@@ -11,4 +11,8 @@ router.post(
   UserController.createUser
 );
 
+router.get("/list_user", UserController.getUsers);
+
+router.get("/:userId", UserController.getUser);
+
 export const UserRouter = router;

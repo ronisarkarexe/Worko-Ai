@@ -19,7 +19,9 @@ describe("User Controller", () => {
       zipCode: 11111,
     };
     (UserService.createUser as jest.Mock).mockResolvedValue({ ...userData });
-    const response = await request(app).post("/api/v1/user/create").send(userData);
+    const response = await request(app)
+      .post("/api/v1/worko/user/create")
+      .send(userData);
     expect(response.status).toBe(200);
   });
 });
