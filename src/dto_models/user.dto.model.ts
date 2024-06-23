@@ -4,4 +4,5 @@ export interface UserDtoModel {
   age: number;
   city: string;
   zipCode: number;
+  isDelete: boolean
 }

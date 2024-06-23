@@ -90,10 +90,28 @@ const updateUserPatch = async (req: Request, res: Response) => {
   }
 };
 
+const softDeleteUser = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.userId;
+    const result = await UserService.softDeleteUser(id);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "User deleted successfully!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      message: "Fail to deleted user!",
+    });
+  }
+};
+
 export const UserController = {
   createUser,
   getUsers,
   getUser,
   updateUserPut,
   updateUserPatch,
+  softDeleteUser,
 };

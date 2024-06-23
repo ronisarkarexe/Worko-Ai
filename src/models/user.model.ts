@@ -8,6 +8,7 @@ export const UserSchema: Schema<IUser> = new Schema<IUser, UserModel>(
     age: { type: Number, required: true },
     city: { type: String, required: true },
     zipCode: { type: Number, required: true },
+    isDelete: { type: Boolean, default: false },
   },
   {
     timestamps: true,

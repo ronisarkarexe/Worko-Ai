@@ -6,6 +6,7 @@ export interface IUser {
   age: number;
   city: string;
   zipCode: number;
+  isDelete: boolean;
 }
 
 export type UserModel = Model<IUser, object>;
@@ -17,13 +18,15 @@ export class UserDto {
   age: number;
   city: string;
   zipCode: string;
+  isDelete: boolean;
 
-  constructor({ id, email, name, age, city, zipCode }: any) {
+  constructor({ id, email, name, age, city, zipCode, isDelete }: any) {
     this.id = id;
     this.email = email;
     this.name = name;
     this.age = age;
     this.city = city;
     this.zipCode = zipCode;
+    this.isDelete = isDelete;
   }
 }

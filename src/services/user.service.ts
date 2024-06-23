@@ -7,7 +7,7 @@ const createUser = async (payload: UserDtoModel): Promise<UserDtoModel> => {
 };
 
 const getUsers = async (): Promise<UserDtoModel[]> => {
-  const result = await User.find({});
+  const result = await User.find({ isDelete: false });
   return result;
 };
 
@@ -35,10 +35,21 @@ const updateUserPatch = async (
   return result;
 };
 
+const softDeleteUser = async (userId: string) => {
+  const result = await User.findOneAndUpdate(
+    { _id: userId },
+    { isDelete: true },
+    { new: true }
+  );
+  console.log("first", result);
+  return result;
+};
+
 export const UserService = {
   createUser,
   getUsers,
   getUser,
   updateUserPut,
   updateUserPatch,
+  softDeleteUser,
 };

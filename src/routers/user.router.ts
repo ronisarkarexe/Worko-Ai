@@ -23,4 +23,6 @@ router.put(
 
 router.patch("/update_user/:userId", UserController.updateUserPatch);
 
+router.patch("/soft_delete/:userId", UserController.softDeleteUser);
+
 export const UserRouter = router;
