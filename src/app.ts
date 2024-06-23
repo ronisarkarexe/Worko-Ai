@@ -6,12 +6,13 @@ import { BaseResponse } from "./dto_models/response.dto.model";
 
 const app: Application = express();
 
-app.use("/api/v1", Routers);
-
 // middleware
 app.use(cors({ credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use("/api/v1", Routers);
+
 
 // base response for testing
 app.get("/", (req: Request, res: Response) => {
