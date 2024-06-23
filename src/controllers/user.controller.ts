@@ -54,8 +54,27 @@ const getUser = async (req: Request, res: Response) => {
   }
 };
 
+const updateUserPut = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.userId;
+    const data = req.body;
+    const result = await UserService.updateUserPut(id, data);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "User updated successfully!",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      message: "Fail to update user!",
+    });
+  }
+};
+
 export const UserController = {
   createUser,
   getUsers,
   getUser,
+  updateUserPut,
 };

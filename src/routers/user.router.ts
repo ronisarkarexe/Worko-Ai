@@ -5,14 +5,20 @@ import { validateRequest } from "../middleware/validation.middleware";
 
 const router = express.Router();
 
+router.get("/list_user", UserController.getUsers);
+
+router.get("/:userId", UserController.getUser);
+
 router.post(
   "/create",
   validateRequest(Validator.createUser),
   UserController.createUser
 );
 
-router.get("/list_user", UserController.getUsers);
-
-router.get("/:userId", UserController.getUser);
+router.put(
+  "/update_user/:userId",
+  validateRequest(Validator.createUser),
+  UserController.updateUserPut
+);
 
 export const UserRouter = router;
