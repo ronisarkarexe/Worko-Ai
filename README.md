@@ -30,4 +30,8 @@ Instructions on setting up your project locally.
 
 - Run the app using `npm run dev`
 
+### Run Test case with coverage
+
+- Run the test `npm run test`
+
 ### Happy Coding...!
