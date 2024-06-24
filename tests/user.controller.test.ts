@@ -17,6 +17,7 @@ describe("User Controller", () => {
       age: 20,
       city: "City One hello",
       zipCode: 11111,
+      password: '123456'
     };
     (UserService.createUser as jest.Mock).mockResolvedValue({ ...userData });
     const response = await request(app)
@@ -33,6 +34,7 @@ describe("User Controller", () => {
       age: 20,
       city: "City One",
       zipCode: "11111",
+      password: '123456'
     };
 
     (UserService.getUser as jest.Mock).mockResolvedValue(mockUser);
@@ -50,6 +52,7 @@ describe("User Controller", () => {
         age: 20,
         city: "City One",
         zipCode: "11111",
+        password: '123456'
       },
       {
         _id: "2",
@@ -58,6 +61,7 @@ describe("User Controller", () => {
         age: 30,
         city: "City Two",
         zipCode: "22222",
+        password: '123456'
       },
     ];
 
@@ -77,6 +81,7 @@ describe("User Controller", () => {
         age: 20,
         city: "City One",
         zipCode: "11111",
+        password: '123456'
       },
     ];
 
@@ -87,6 +92,7 @@ describe("User Controller", () => {
       age: 20,
       city: "City One",
       zipCode: "11111",
+      password: '123456'
     };
 
     (UserService.updateUserPut as jest.Mock).mockResolvedValue(mockUsers);
@@ -107,6 +113,7 @@ describe("User Controller", () => {
         age: 20,
         city: "City One",
         zipCode: "11111",
+        password: '123456'
       },
     ];
 
@@ -117,6 +124,7 @@ describe("User Controller", () => {
       age: 20,
       city: "City One",
       zipCode: "11111",
+      password: '123456'
     };
 
     (UserService.updateUserPut as jest.Mock).mockResolvedValue(mockUsers);
@@ -138,6 +146,7 @@ describe("User Controller", () => {
         city: "City One",
         zipCode: "11111",
         isDelete: false,
+        password: '123456'
       },
     ];
     (UserService.softDeleteUser as jest.Mock).mockResolvedValue(mockUsers);

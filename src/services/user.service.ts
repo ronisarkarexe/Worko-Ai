@@ -41,7 +41,6 @@ const softDeleteUser = async (userId: string) => {
     { isDelete: true },
     { new: true }
   );
-  console.log("first", result);
   return result;
 };
 
