@@ -7,6 +7,7 @@ export interface IUser {
   city: string;
   zipCode: number;
   isDelete: boolean;
+  password: string;
 }
 
 export type UserModel = Model<IUser, object>;
